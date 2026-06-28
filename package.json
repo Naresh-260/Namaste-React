@@ -1,0 +1,29 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "This repository contains react Learning files",
+
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Naresh-260/Namaste-React.git"
+  },
+  "keywords": [
+    "react"
+  ],
+  "author": "Naresh Lingammagari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Naresh-260/Namaste-React/issues"
+  },
+  "homepage": "https://github.com/Naresh-260/Namaste-React#readme",
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  }
+}
