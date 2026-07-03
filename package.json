@@ -4,6 +4,8 @@
   "description": "This repository contains react Learning files",
 
   "scripts": {
+    "start" : "parcel helloworld.html",
+    "build": "parcel build helloworld.html",
     "test": "jest"
   },
   "repository": {
