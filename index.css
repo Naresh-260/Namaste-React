@@ -8,11 +8,9 @@
     border:1px solid black;
     margin: 10px;
 }
-.logo{
-    background-image: url("https://static.vecteezy.com/system/resources/previews/021/813/141/original/food-delivery-logo-design-template-with-delivery-and-food-icon-perfect-for-business-company-mobile-app-restaurant-etc-free-vector.jpg");
-    background-size: cover;
-    width: 100px;
-    height: 100px;
+.logo img {
+  width: 100px;
+  height: auto;
 }
 .nav-items ul{
     list-style-type: none;
