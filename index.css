@@ -54,3 +54,20 @@ img{
     display: inline-block;
     margin: 10px;
 }
+.loginorLogoutButton{
+
+    border: 1px solid #ccc;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    text-align: center;
+
+}
+.searchFilter{
+    display: flex;
+    justify-content: center;
+}
+.filter{
+    border: 2px;
+    margin-left: 20px;
+
+}
