@@ -46,13 +46,15 @@ img{
     object-fit: cover; 
     display: block;
 }
-.shimmer{
+.shimmer-card{
     height: 200px;
     width: 300px;
     background-color: #f0f0f0;
     border: 1px solid #e0e0e0;
-    display: inline-block;
     margin: 10px;
+}
+.shimmer{
+    display: inline-block;
 }
 .loginorLogoutButton{
 

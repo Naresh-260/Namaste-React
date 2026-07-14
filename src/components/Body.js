@@ -27,20 +27,12 @@ const Body = () => {
         console.error("Error fetching data:", error);
     }
 };
-
 if (restaurants.length === 0) {
     return (
         <div>
-            <Shimmer/>
-            <Shimmer/>
-            <Shimmer/>
-            <Shimmer/>
-            <Shimmer/>
-            <Shimmer/>
-            <Shimmer/>
-            <Shimmer/>
-            <Shimmer/>
-            <Shimmer/>
+            {Array.from({ length: 15 }).map((_, index) => (
+                <Shimmer key={index} />
+            ))}
         </div>
     );
 }

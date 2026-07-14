@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { header_logo } from "../utils/constants";
 import { useState } from "react";
 const Header = () =>{
@@ -9,10 +10,24 @@ const Header = () =>{
             </div>
             <div className ="nav-items">
             <ul>
-                <li>Home</li>
-                <li>About us</li>
-                <li>Contact</li>
+                <li>
+                    <Link to = "/">Home</Link>
+                </li>
+
+                <li>
+                    <Link to = "/about">About Us</Link>
+                </li>
+
+                <li>
+                    <Link to = "/contact">Contact Us</Link>
+                </li>
+
+                <li>
+                    <Link to = "/cart">Cart</Link>
+                </li>
+
             </ul>
+            
             <div className="loginorLogoutButton">
                 <button onClick={()=>{
                     setLoginOrLogout(LoginOrLogout === "Login" ? "Logout" : "Login");
