@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { MENU_URL } from "../utils/constants";
+import Shimmer from "./Shimmer";
 
 const Menu = () => {
     const [varities, setVarities] = useState([]);
@@ -26,11 +27,13 @@ const Menu = () => {
         }
     };
 
-
+    if(varities.length === 0){
+        return <Shimmer/>
+    }
+    
     return (
         <div>
             <h1>MENU ITEMS:</h1>
-
          <ul>
             {varities.map((item) => (
                 <li key={item?.card?.info?.id}>

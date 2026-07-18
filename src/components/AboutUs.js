@@ -1,11 +1,23 @@
-import React from 'react'
+import User from "./User"
+import UserClass from "./UserClass"
+import React from "react";
 
-const AboutUs = () => {
-  return (
-    <div>
-      <h1>I am in About us Page</h1>
+
+class AboutUs extends React.Component{
+
+  constructor(props){
+    super(props);
+
+  }
+  render(){
+    return(
+      <div>
+      <h1>Look at MyDeatails</h1>
+      <User/> 
     </div>
-  )
+
+    )
+  }
 }
 
 export default AboutUs;
