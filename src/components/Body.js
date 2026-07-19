@@ -2,76 +2,85 @@ import { useState, useEffect } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import { MENU_URL } from "../utils/constants";
+import useOnlineStatus from "../utils/useOnlineStatus";
+import useRestuarents from "../utils/useRestuarents";
 
 const Body = () => {
-    const [restaurants, setRestaurants] = useState([]);
 
-    const [searchrest, setSearchRest] = useState("");
+    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    const [searchRest, setSearchRest] = useState("");
 
-    const [fileteredRestuarents, setFilteredRestuarents] = useState([]);
+    const restaurants = useRestuarents();
 
     useEffect(() => {
-        fetchData();
-    }, []);
+        setFilteredRestaurants(restaurants);
+    }, [restaurants]);
 
-    const fetchData = async () => {
-        try {
-            const data = await fetch(
-                "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
-            );
-            const json_data = await data.json();
-            console.log(json_data);
-            const listofRestaurants = json_data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-            setRestaurants(listofRestaurants);
-            setFilteredRestuarents(listofRestaurants);
-    } catch (error) {
-        console.error("Error fetching data:", error);
+    const onlineStatus = useOnlineStatus();
+
+    if (!onlineStatus) {
+        return (
+            <h1>OOPS! Please Check Your Internet Connection!!</h1>
+        );
     }
-};
-if (restaurants.length === 0) {
-    return (
-        <div>
-            {Array.from({ length: 15 }).map((_, index) => (
-                <Shimmer key={index} />
-            ))}
-        </div>
-    );
-}
+
+    if (restaurants.length === 0) {
+        return (
+            <div>
+                {Array.from({ length: 15 }).map((_, index) => (
+                    <Shimmer key={index} />
+                ))}
+            </div>
+        );
+    }
+
     return (
         <div className="body">
             <div className="searchFilter">
-
                 <div className="search">
-                    <input type="text" placeholder="Search for restaurants" value={searchrest}
-                        onChange = {(e)=>{
+                    <input
+                        type="text"
+                        placeholder="Search for restaurants"
+                        value={searchRest}
+                        onChange={(e) => {
                             setSearchRest(e.target.value);
                         }}
                     />
-                    <button onClick = {() => {
-                        const filteredRestuarents = restaurants.filter((restuarent) => 
-                        restuarent.info.name.toLowerCase().includes(searchrest.toLowerCase()));
-                        setFilteredRestuarents(filteredRestuarents);
-                    }}>Search</button>
+                    <button
+                        onClick={() => {
+                            const filtered = restaurants.filter((restaurant) =>restaurant.info.name.toLowerCase()
+                                    .includes(searchRest.toLowerCase())
+                            );
+                            setFilteredRestaurants(filtered);
+                        }}>
+                        Search
+                    </button>
                 </div>
-
                 <div className="filter">
-                    <button onClick={() => {
-                        const topRatedRestaurents = restaurants.filter((restaurant) => 
-                        restaurant.info.avgRating > 4.5);
-                        setFilteredRestuarents(topRatedRestaurents);
-                    }}>Top rating restaurants</button>
+                    <button
+                        onClick={() => {
+                            const topRatedRestaurants = restaurants.filter(
+                                (restaurant) => restaurant.info.avgRating > 4.5
+                            );
+                            setFilteredRestaurants(topRatedRestaurants);
+                        }}>
+                        Top Rated Restaurants
+                    </button>
                 </div>
 
             </div>
-            
+
             <div className="restaurant-list">
-                {fileteredRestuarents.map((restaurant) => (
-                    <Link to = {"/menu/" + restaurant.info.id }  key={restaurant.info.id} ><RestaurantCard 
-                        resData={restaurant} 
-                    /></Link>
+                {filteredRestaurants.map((restaurant) => (
+                    <Link
+                        to={"/menu/" + restaurant.info.id}
+                        key={restaurant.info.id}
+                    >
+                        <RestaurantCard resData={restaurant} />
+                    </Link>
                 ))}
             </div>
+
         </div>
     );
 };
