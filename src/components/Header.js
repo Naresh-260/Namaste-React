@@ -15,38 +15,40 @@ const Header = () =>{
         display = "Ofline";
     }
     return (
-        <div className="header">
-            <div className="logo">
+        <div className= "flex  justify-between bg-sky-100">
+            <div className="w-32">
             <img src = {header_logo} alt="logo"/>
             </div>
-            <div className ="nav-items">
-            <ul>
-                <li>{display}</li>
-                <li>
+            <ul className="flex my-8">
+                <li className="mx-4 px-4">{display}</li>
+                <li className="mx-4 px-4">
                     <Link to = "/">Home</Link>
                 </li>
 
-                <li>
+                <li className="mx-4 px-4">
                     <Link to = "/about">About Us</Link>
                 </li>
 
-                <li>
+                <li className="mx-4 px-4">
                     <Link to = "/contact">Contact Us</Link>
                 </li>
 
-                <li>
-                    <Link to = "/cart">Cart</Link>
+                <li className="mx-4 px-4">
+                    <Link to = "/grocery">Grocery</Link>
                 </li>
 
-            </ul>
-            
-            <div className="loginorLogoutButton">
-                <button onClick={()=>{
-                    setLoginOrLogout(LoginOrLogout === "Login" ? "Logout" : "Login");
-                }}>{LoginOrLogout}</button>
+                <li className="mx-4 px-4">
+                    <Link to = "/cart">Cart</Link>
+                </li>
+                <li className="mx-4 px-4">
+                    <div className="loginorLogoutButton">
+                        <button onClick={()=>{
+                            setLoginOrLogout(LoginOrLogout === "Login" ? "Logout" : "Login");
+                            }}>{LoginOrLogout}</button>
+                    </div>
+                </li>
+            </ul>  
             </div>
-            </div>
-        </div>
     )
 }
 

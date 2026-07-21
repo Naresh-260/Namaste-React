@@ -12,8 +12,8 @@ class AboutUs extends React.Component{
   render(){
     return(
       <div>
-      <h1>Look at MyDeatails</h1>
-      <User/> 
+      <h1 className="font-bold text-lg  text-center">Look at MyDeatails</h1>
+      <User name = {"Naresh Lingammagari"}/> 
     </div>
 
     )
