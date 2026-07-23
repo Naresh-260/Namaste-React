@@ -9,6 +9,8 @@ const Menu = () => {
    
     const {resId} = useParams();
 
+    const [showIndex, setShowIndex] = useState(0);
+
     const varities = useMenuItems(resId)
     if(varities.length === 0){
         return <Shimmer/>
@@ -18,7 +20,10 @@ const Menu = () => {
             <h1>MENU ITEMS:</h1>
                 {varities.map((varity,index)=> {
                      return ( <div key = {varity.card?.card?.categoryId}>
-                                <RestaurentCategory data = {varity.card?.card}/>
+                                <RestaurentCategory data = {varity.card?.card} 
+                                showItems = { index == showIndex ? true : false}
+                                setShowIndex = {()=>setShowIndex(index)}
+                                />
                                 </div>
                             )
                 })}

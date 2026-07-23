@@ -2,11 +2,10 @@ import { useState} from "react";
 import ItemList from "./ItemList";
 
 const RestaurentCategory = (props) => {
-    const {data} = props;
+    const {data,showItems,setShowIndex} = props;
     console.log(data);
-    const[showItems,setShowItems] = useState(false);
         const onClickHandler = ()=>{
-        setShowItems(!showItems);
+        setShowIndex();
     }
     return (
         <div className="w-6/12 mx-auto my-2 bg-gray-100">
