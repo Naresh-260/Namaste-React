@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard,{isVeg} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -12,6 +12,10 @@ const Body = () => {
 
     const restaurants = useRestuarents();
 
+    console.log(restaurants);
+
+   const VegRestaurantCard = isVeg(RestaurantCard);
+   
     useEffect(() => {
         setFilteredRestaurants(restaurants);
     }, [restaurants]);
@@ -75,8 +79,10 @@ const Body = () => {
                     <Link
                         to={"/menu/" + restaurant.info.id}
                         key={restaurant.info.id}
-                    >
-                        <RestaurantCard resData={restaurant} />
+                    >     
+                        {
+                            restaurant.info?.veg == true ?<VegRestaurantCard resData = {restaurant}/> : <RestaurantCard resData={restaurant} />
+                        }
                     </Link>
                 ))}
             </div>

@@ -27,5 +27,20 @@ const RestaurantCard = (props) =>{
 );
 }
 
+export const isVeg = (RestaurentCard)=>{
+    return (props) =>{
+
+        return(
+            <div>
+                <p className="absolute z-auto bg-slate-950 text-white  rounded">
+                Veg
+                </p>
+                <RestaurantCard {...props}/>
+            </div>
+        )
+    }
+
+}
+
 
 export default RestaurantCard;
