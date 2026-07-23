@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { MENU_URL } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import useMenuItems from "../utils/useMenuItems";
-import ListItemCategory from "./ListItemCategory";
+import RestaurentCategory from "./RestuarentCategory";
 
 const Menu = () => {
    
@@ -16,9 +16,9 @@ const Menu = () => {
     return (
         <div>
             <h1>MENU ITEMS:</h1>
-                {varities.map((varity)=> {
+                {varities.map((varity,index)=> {
                      return ( <div key = {varity.card?.card?.categoryId}>
-                                <ListItemCategory data = {varity.card?.card}/>
+                                <RestaurentCategory data = {varity.card?.card}/>
                                 </div>
                             )
                 })}
