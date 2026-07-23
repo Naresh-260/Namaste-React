@@ -7,7 +7,6 @@ const ListItemCategory = (props) => {
 
     const[showItems,setShowItems] = useState(false);
 
-  
         const onClickHandler = ()=>{
         setShowItems(!showItems);
     }
