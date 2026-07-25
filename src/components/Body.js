@@ -1,18 +1,21 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect,useContext, use } from "react";
 import RestaurantCard,{isVeg} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import useRestuarents from "../utils/useRestuarents";
+import UserContext from "../utils/userContext";
+
 
 const Body = () => {
 
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchRest, setSearchRest] = useState("");
 
+    const {LoggedInUser,setUserName} = useContext(UserContext)
+
     const restaurants = useRestuarents();
 
-    console.log(restaurants);
 
    const VegRestaurantCard = isVeg(RestaurantCard);
    
@@ -70,6 +73,14 @@ const Body = () => {
                         }}>
                         Top Rated Restaurants
                     </button>
+                </div>
+
+                <div className="text-white">
+                    UserName : <input type = "text" className="p-4 m-4 border-black  text-black" value={LoggedInUser}
+                        onChange={(e)=>{
+                            setUserName(e.target.value);
+                        }}
+                    />
                 </div>
 
             </div>

@@ -3,7 +3,6 @@ import ItemList from "./ItemList";
 
 const RestaurentCategory = (props) => {
     const {data,showItems,setShowIndex} = props;
-    console.log(data);
         const onClickHandler = ()=>{
         setShowIndex();
     }

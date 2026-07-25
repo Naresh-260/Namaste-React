@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { header_logo } from "../utils/constants";
-import { useState } from "react";
+import { useState, useContext} from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/userContext";
 const Header = () =>{
     const [LoginOrLogout, setLoginOrLogout] = useState("Login");
     const onlineOrOfline = useOnlineStatus();
     let display = "Online";
+
+    const {LoggedInUser} = useContext(UserContext);
 
     if(onlineOrOfline == true){
         display = "Online";
@@ -46,6 +49,9 @@ const Header = () =>{
                             setLoginOrLogout(LoginOrLogout === "Login" ? "Logout" : "Login");
                             }}>{LoginOrLogout}</button>
                     </div>
+                </li>
+                <li className="mx-4 px-4">
+                    {LoggedInUser}
                 </li>
             </ul>  
             </div>
