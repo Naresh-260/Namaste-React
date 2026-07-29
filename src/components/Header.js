@@ -3,12 +3,15 @@ import { header_logo } from "../utils/constants";
 import { useState, useContext} from "react";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/userContext";
+import { useSelector } from "react-redux";
 const Header = () =>{
     const [LoginOrLogout, setLoginOrLogout] = useState("Login");
     const onlineOrOfline = useOnlineStatus();
     let display = "Online";
 
     const {LoggedInUser} = useContext(UserContext);
+
+    const cartItems = useSelector((store) => store.cart.items)
 
     if(onlineOrOfline == true){
         display = "Online";
@@ -41,7 +44,7 @@ const Header = () =>{
                 </li>
 
                 <li className="mx-4 px-4">
-                    <Link to = "/cart">Cart</Link>
+                    <Link to = "/cart">Cart({cartItems.length} items)</Link>
                 </li>
                 <li className="mx-4 px-4">
                     <div className="loginorLogoutButton">
