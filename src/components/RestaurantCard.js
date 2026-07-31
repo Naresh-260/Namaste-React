@@ -1,6 +1,7 @@
 import { CND_URL } from "../utils/constants";
 const RestaurantCard = (props) =>{
     const {resData} = props;
+    console.log(resData)
     const {name,areaName, avgRating, cuisines, costForTwo,cloudinaryImageId} = resData.info;
     return (
   <div className="m-4 p-4 w-56 rounded-lg bg-gray-100 shadow-md hover:shadow-xl hover:scale-105 transition duration-300">
