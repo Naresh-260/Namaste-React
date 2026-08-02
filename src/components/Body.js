@@ -46,7 +46,7 @@ const Body = () => {
             <div className="flex justify-center">
                 <div className="m-4 p-4">
                     <input className="border border-solid p-2"
-                        type="text"
+                        type="text" data-testid="search-input"
                         placeholder="Search for restaurants"
                         value={searchRest}
                         onChange={(e) => {
@@ -85,9 +85,9 @@ const Body = () => {
 
             </div>
 
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap" >
                 {filteredRestaurants.map((restaurant) => (
-                    <Link
+                    <Link data-testid="res-list"
                         to={"/menu/" + restaurant.info.id}
                         key={restaurant.info.id}
                     >     

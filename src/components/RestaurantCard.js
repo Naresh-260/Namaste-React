@@ -36,7 +36,7 @@ export const isVeg = (RestaurentCard)=>{
                 <p className="absolute z-auto bg-slate-950 text-white  rounded">
                 Veg
                 </p>
-                <RestaurantCard {...props}/>
+                <RestaurentCard {...props}/>
             </div>
         )
     }

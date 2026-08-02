@@ -19,7 +19,7 @@ const Menu = () => {
         <div>
             <h1>MENU ITEMS:</h1>
                 {varities.map((varity,index)=> {
-                     return ( <div key = {varity.card?.card?.categoryId}>
+                     return (  <div key={`${varity.card?.card?.categoryId}-${index}`}>
                                 <RestaurentCategory data = {varity.card?.card} 
                                 showItems = { index == showIndex ? true : false}
                                 setShowIndex = {()=>setShowIndex(index)}

@@ -43,7 +43,7 @@ const Header = () =>{
                     <Link to = "/grocery">Grocery</Link>
                 </li>
 
-                <li className="mx-4 px-4">
+                <li className="mx-4 px-4" data-testid="cart">
                     <Link to = "/cart">Cart({cartItems.length} items)</Link>
                 </li>
                 <li className="mx-4 px-4">
